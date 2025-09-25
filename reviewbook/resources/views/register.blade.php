@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form SanberCode</title>
-</head>
-<body>
+@extends('layouts.master')
+@section('title')
+    REGISTER
+@endsection
+@section('content') 
     <h1>Buat Account Baru!</h1>
     <h3>Sign Up Form</h3>
     <form action="/welcome"method="POST">
@@ -39,5 +36,4 @@
         <br><br>
         <input type="submit" value="Sign up">
     </form>
-</body>
-</html>
+@endsection
