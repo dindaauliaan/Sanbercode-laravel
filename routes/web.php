@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\BookController;
+
 
 Route::get('/', ([DashboardController::class, 'home']));
 
@@ -22,3 +24,5 @@ Route::get('/genre/{id}',[GenreController::class,'show']);
 Route::get('/genre/{id}/edit',[GenreController::class,'edit']);
 Route::put('/genre/{id}',[GenreController::class,'update']);
 Route::delete('/genre/{id}',[GenreController::class,'destroy']);
+//CRUD BOOK
+Route ::resource('book', BookController::class);
