@@ -1,0 +1,41 @@
+@extends('layouts.master')
+@section('title')
+    Tampil Buku
+@endsection
+@section('content')
+    <a href="/book/create" class="btn btn-primary my-3">Tambah Buku</a>
+    <div class="row">
+        @forelse ($book as $item)
+                <div class="col-4">
+                    <div class="card">
+                    <img src="{{asset('image/'.$item->image)}}" class="card-img-top" height="300px"alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$item->title}}</h5>
+                        <p class="card-text">{{Str::limit($item->summary, 100)}}</p>
+                        <div class="d-grid gap-2">
+                            <a href="/book/{{$item->id}}" class="btn btn-info">Read More</a>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <div class="d-grid gap-2">
+                                    <a href="/book/{{$item->id}}/edit" class="btn btn-warning">Edit</a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <form action="/book/{{$item->id}}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <div class="d-grid gap-2">
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        @empty
+            <h1>belum ada daftar buku</h1>
+        @endforelse
+    </div>
+@endsection
