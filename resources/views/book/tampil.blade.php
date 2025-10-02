@@ -3,7 +3,9 @@
     Tampil Buku
 @endsection
 @section('content')
+    @auth
     <a href="/book/create" class="btn btn-primary my-3">Tambah Buku</a>
+    @endauth
     <div class="row">
         @forelse ($book as $item)
                 <div class="col-4">
@@ -15,6 +17,7 @@
                         <div class="d-grid gap-2">
                             <a href="/book/{{$item->id}}" class="btn btn-info">Read More</a>
                         </div>
+                        @auth
                         <div class="row mt-3">
                             <div class="col">
                                 <div class="d-grid gap-2">
@@ -31,6 +34,7 @@
                                 </form>
                             </div>
                         </div>
+                        @endauth
                     </div>
                     </div>
                 </div>

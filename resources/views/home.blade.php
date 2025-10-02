@@ -4,6 +4,11 @@
 @endsection
 
 @section('content')
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
     <h1>SanberBook</h1>
     <h2>Social Media Developer Santai Berkualitas</h2>

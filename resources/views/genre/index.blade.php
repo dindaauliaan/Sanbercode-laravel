@@ -6,7 +6,9 @@
 @section('content')
 
     <div class="container mt-4">
+        @auth
         <a href="/genre/create" class="btn btn-primary btn-sm">Tambah</a>
+        @endauth
         <table class="table table-striped table-bordered mt-3">
             <thead class="table-dark">
                 <tr>
@@ -23,11 +25,12 @@
                     <td>
                     <form action="/genre/{{ $genre->id }}" method="POST">
                     <a href="/genre/{{ $genre->id }}" class="btn btn-info btn-sm">Detail</a>
+                    @auth
                     <a href="/genre/{{ $genre->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="btn btn-danger btn-sm" value="Delete">
-
+                    @endauth
                     </form>
                     </td>
                     

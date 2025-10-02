@@ -1,5 +1,5 @@
 <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container position-relative d-flex align-items-center">
+    <div class="container position-relative d-flex justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
@@ -11,10 +11,25 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/genre">Genre</a></li>
+          <li><a href="/book">Book</a></li>
           
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
+      @guest
+        <div class="ms-auto">
+        <a href="/login" class="btn btn-primary mr-3">Login</a>
+        <a href="/register" class="btn btn-info">Register</a>
+      </div>
+      @endguest
+      @auth
+        <div class="ms-auto">
+          <form action="/logout" method="POST">
+            @csrf
+              <button class="btn btn-warning">logout</button>
+          </form>
+        </div>
+      @endauth
 
 
     </div>
