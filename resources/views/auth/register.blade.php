@@ -30,6 +30,6 @@
             <label  class="form-label">password confirmation</label>
             <input type="password" class="form-control" name="password_confirmation">
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-outline-success">Register</button>
     </form>
 @endsection

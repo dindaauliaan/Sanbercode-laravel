@@ -4,7 +4,7 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Company</h1><span>.</span>
+        <h1 class="sitename">Review Book</h1><span>.</span>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -21,15 +21,15 @@
       </nav>
       @guest
         <div class="ms-auto">
-        <a href="/login" class="btn btn-primary mr-3">Login</a>
-        <a href="/register" class="btn btn-info">Register</a>
+        <a href="/login" class="btn btn-outline-success mr-3">Login</a>
+        <a href="/register" class="btn btn-outline-success">Register</a>
       </div>
       @endguest
       @auth
         <div class="ms-auto">
           <form action="/logout" method="POST">
             @csrf
-              <button class="btn btn-warning">logout</button>
+              <button class="btn btn-outline-success my-3">logout</button>
           </form>
         </div>
       @endauth

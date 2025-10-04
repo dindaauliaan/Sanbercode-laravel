@@ -28,6 +28,6 @@
             <label  class="form-label">Address</label>
             <textarea name="address" class="form-control" cols="3" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-outline-success">Submit</button>
     </form>
 @endsection

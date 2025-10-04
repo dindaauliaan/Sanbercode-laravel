@@ -23,6 +23,6 @@
             <label  class="form-label">Description</label>
             <textarea name="description" class="form-control" cols="3" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-outline-success">Submit</button>
     </form>
 @endsection

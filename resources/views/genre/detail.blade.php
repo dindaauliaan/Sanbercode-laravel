@@ -16,7 +16,7 @@
                         <h5 class="card-title">{{$item->title}}</h5>
                         <p class="card-text">{{Str::limit($item->summary, 100)}}</p>
                         <div class="d-grid gap-2">
-                            <a href="/book/{{$item->id}}" class="btn btn-info">Read More</a>
+                            <a href="/book/{{$item->id}}" class="btn btn-success" style="background-color: #BDE3C3; border-color: #28a745; color:black">Read More</a>
                         </div>
                         @auth
                         @if(Auth::user()->role === 'admin')
@@ -45,5 +45,5 @@
             <h4>Tidak ada buku dalam genre ini.</h4>
         @endforelse
         </div>      
-    <a href="/genre" class="btn btn-secondary btn-sm my-3">Kembali</a>
+    <a href="/genre" class="btn btn-outline-success btn-md my-3">Kembali</a>
     @endsection

@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('title')
-    Tampil Buku
+    List Buku
 @endsection
 @section('content')
     @auth
     @if(Auth::user()->role === 'admin')
-    <a href="/book/create" class="btn btn-primary my-3">Tambah Buku</a>
+    <a href="/book/create" class="btn btn-outline-success my-3">Tambah Buku</a>
     @endif
     @endauth
     <div class="row">
@@ -18,7 +18,7 @@
                         <span class="badge bg-success">{{$item->genre->name}}</span>
                         <p class="card-text">{{Str::limit($item->summary, 100)}}</p>
                         <div class="d-grid gap-2">
-                            <a href="/book/{{$item->id}}" class="btn btn-info">Read More</a>
+                            <a href="/book/{{$item->id}}" class="btn btn-success" style="background-color: #BDE3C3; border-color: #28a745; color :black;">Read More</a>
                         </div>
                         @auth
                         @if(Auth::user()->role === 'admin')
