@@ -5,10 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Genre;
 use App\Models\Book;
+use App\Models\Comment;
 use Illuminate\Support\Facades\File;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\IsAdmin;
 
-class BookController extends Controller
+class BookController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware(IsAdmin::class, except: ['index','show']),
+        ];
+    }
     /**
      * Display a listing of the resource.
      */
@@ -108,4 +119,5 @@ class BookController extends Controller
         $book->delete();
         return redirect('/book');
     }
+    
 }

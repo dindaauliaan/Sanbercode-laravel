@@ -7,7 +7,9 @@
 
     <div class="container mt-4">
         @auth
+        @if(Auth::user()->role === 'admin')
         <a href="/genre/create" class="btn btn-primary btn-sm">Tambah</a>
+        @endif
         @endauth
         <table class="table table-striped table-bordered mt-3">
             <thead class="table-dark">
@@ -26,10 +28,12 @@
                     <form action="/genre/{{ $genre->id }}" method="POST">
                     <a href="/genre/{{ $genre->id }}" class="btn btn-info btn-sm">Detail</a>
                     @auth
+                    @if(Auth::user()->role === 'admin')
                     <a href="/genre/{{ $genre->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                    @endif
                     @endauth
                     </form>
                     </td>

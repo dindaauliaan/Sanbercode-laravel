@@ -4,7 +4,46 @@
 @endsection
 
 @section('content')
-    <h1>{{ $genre->name }}</h1>
-    <p>{{ $genre->description }}</p>
-    <a href="/genre" class="btn btn-secondary btn-sm">Kembali</a>
-@endsection
+    <h3>{{$genre->name}}</h3>
+    <p>{{$genre->description}}</p>
+    <hr>
+    @forelse($genre->books as $item)
+        <div class="row">
+                <div class="col-4">
+                    <div class="card">
+                    <img src="{{asset('image/'.$item->image)}}" class="card-img-top" height="300px"alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$item->title}}</h5>
+                        <p class="card-text">{{Str::limit($item->summary, 100)}}</p>
+                        <div class="d-grid gap-2">
+                            <a href="/book/{{$item->id}}" class="btn btn-info">Read More</a>
+                        </div>
+                        @auth
+                        @if(Auth::user()->role === 'admin')
+                        <div class="row mt-3">
+                            <div class="col">
+                                <div class="d-grid gap-2">
+                                    <a href="/book/{{$item->id}}/edit" class="btn btn-warning">Edit</a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <form action="/book/{{$item->id}}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <div class="d-grid gap-2">
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        @endif
+                        @endauth
+                    </div>
+                    </div>
+                </div>
+        @empty
+            <h4>Tidak ada buku dalam genre ini.</h4>
+        @endforelse
+        </div>      
+    <a href="/genre" class="btn btn-secondary btn-sm my-3">Kembali</a>
+    @endsection

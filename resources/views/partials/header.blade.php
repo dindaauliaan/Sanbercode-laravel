@@ -12,6 +12,9 @@
           <li><a href="/">Home</a></li>
           <li><a href="/genre">Genre</a></li>
           <li><a href="/book">Book</a></li>
+          @auth
+          <li><a href="/profile">Profile</a></li>
+          @endauth
           
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

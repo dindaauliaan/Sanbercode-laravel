@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,5 +50,41 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/')->with('success', 'logout berhasil');
+    }
+    public function getProfile(){
+        $userAuth = Auth::user()->profile;
+        $userId = Auth::id();
+        $profileData = Profile::where('user_id', $userId)->first();
+        //dd($userAuth);
+        if($userAuth){
+            return view("profile.edit",["profile" => $profileData]);
+        }
+        else{
+            return view("profile.create");
+        }
+    }
+    public function createProfile(Request $request){
+        $request->validate([
+            'age'=>'required|numeric',
+            'address'=>'required|string'
+        ]);
+        $profile = new Profile();
+        $userId = Auth::id();
+        $profile->age = $request->input('age');
+        $profile->address = $request->input('address');
+        $profile->user_id = $userId;
+        $profile->save();
+        return redirect('/profile')->with('success', 'Profile created successfully');
+    }
+    public function updateProfile(Request $request,$id){
+        $request->validate([
+            'age'=>'required|numeric',
+            'address'=>'required|string'
+        ]);
+        $profile = Profile::find($id);
+        $profile->age = $request->input('age');
+        $profile->address = $request->input('address');
+        $profile->save();
+        return redirect('/profile')->with('success', 'Profile updated successfully');
     }
 }

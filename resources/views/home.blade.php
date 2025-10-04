@@ -9,6 +9,14 @@
         {{ session('success') }}
     </div>
 @endif
+@if (session('danger'))
+    <div class="alert alert-danger">
+        {{ session('danger') }}
+    </div>
+@endif
+@auth
+    <h3>Selamat Datang {{Auth()->user()->name}}</h3>
+@endauth
 
     <h1>SanberBook</h1>
     <h2>Social Media Developer Santai Berkualitas</h2>
